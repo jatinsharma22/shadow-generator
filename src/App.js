@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import {useRef,  React, useState } from "react";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
@@ -12,6 +12,7 @@ function App() {
   const [Color, setColor] = useState("#000");
   const [Boxbg, setBoxbg] = useState("#3668ab");
   const [Inset, setInset] = useState(false);
+  const [toolTip, setToolTip] = useState("Copy")
 
   const handleSliderChange = (event) => {
     const value = parseFloat(event.target.value);
@@ -36,6 +37,28 @@ function App() {
   // Get RGB value from selected color
   const rgbValue = hexToRgb(Color);
 
+
+
+  // Copy CSS CODE
+
+  const codeRef = useRef(null);
+  const handleCopyClick = () => {
+    const textToCopy = codeRef.current.innerText;
+    // Create a temporary textarea to copy the text
+    const tempTextarea = document.createElement('textarea');
+    tempTextarea.value = textToCopy;
+    document.body.appendChild(tempTextarea);
+
+    // Select the text and copy to the clipboard
+    tempTextarea.select();
+    document.execCommand('copy');
+
+    // Remove the temporary textarea
+    document.body.removeChild(tempTextarea);
+    setToolTip("Copied")
+  };
+
+
   return (
     <>
       <ShadowMain
@@ -54,6 +77,9 @@ function App() {
         setBoxbg={setBoxbg}
         Boxbg={Boxbg}
         rgbValue={rgbValue}
+        copyCss={codeRef}
+        handleCopyClick={handleCopyClick}
+        toolTip={toolTip}
       />
     </>
   );

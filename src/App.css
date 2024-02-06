@@ -18,3 +18,9 @@ label {
 h3.text-center {
   min-height: 80px;
 }
+.copy_btn {
+  background: #e3e3e3;
+}
+.copy_btn svg {
+  width: 24px;
+}

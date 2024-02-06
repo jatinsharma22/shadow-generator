@@ -1,5 +1,5 @@
-import React from "react";
-import { Form, Row, Col, Container } from "react-bootstrap";
+import React, { useState } from "react";
+import {Button, Form, Row, Col, Container, Tooltip, OverlayTrigger } from "react-bootstrap";
 
 const ShadowMain = ({
   horizontal,
@@ -16,8 +16,20 @@ const ShadowMain = ({
   Color,
   setBoxbg,
   Boxbg,
-  rgbValue
+  rgbValue,
+  copyCss,
+  handleCopyClick,
+  toolTip
 }) => {
+
+  const renderTooltip = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+      {toolTip}
+    </Tooltip>
+  );
+
+ 
+
   return (
     <>
       <Container>
@@ -122,8 +134,18 @@ const ShadowMain = ({
               >
                 <h2 className="text-white text-center">{Boxbg}</h2>
               </div>
+              
 
-              <h3 className="text-center">
+              <OverlayTrigger
+                placement="right"
+                delay={{ show: 100, hide: 400 }}
+                overlay={renderTooltip}
+              >
+              <Button variant="link" className="copy_btn float-end" onClick={handleCopyClick}>
+                  <img src="./copy.svg" />
+                </Button>
+                </OverlayTrigger>
+              <h3 className="text-center" ref={copyCss}>
                 {InsetVal ? (
                   <code>
                     box-shadow: {horizontalVal}px {verticalVal}px {blurVal}px {rgbValue} inset
@@ -134,6 +156,7 @@ const ShadowMain = ({
                   </code>
                 )}
               </h3>
+             
             </Col>
           </Row>
         </div>
