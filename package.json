@@ -1,7 +1,6 @@
 {
   "name": "shadow-generator",
   "version": "0.1.0",
-  "homepage": "http://aishkin.com/shadow-generator",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
