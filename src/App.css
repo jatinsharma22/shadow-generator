@@ -5,8 +5,16 @@ body {
   background-color: #fff;
   padding: 50px 0;
 }
-label {font-weight: 500; color: #000;}
-.main{padding: 50px 0;}
+label {
+  font-weight: 500;
+  color: #000;
+}
+.main {
+  padding: 50px 0;
+}
 .github img {
   max-width: 40px;
+}
+h3.text-center {
+  min-height: 80px;
 }
