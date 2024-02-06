@@ -152,7 +152,7 @@ function App() {
           </Row>
         </div>
         <div className="text-center github">
-          <a href="">
+          <a href="https://github.com/jatinsharma22/shadow-generator/tree/master" target="_blank">
             <img src="./github.svg" alt="Github" />
           </a>
         </div>
